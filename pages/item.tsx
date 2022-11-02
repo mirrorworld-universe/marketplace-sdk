@@ -455,15 +455,16 @@ const NftItem = () => {
           ) : (
             ""
           )}
-          {/*@ts-ignore */}
-          {// @ts-ignore
-          data?.listed &&
-          // @ts-ignore
-          userInfo?.wallet?.sol_address !== data.owner_address ? (
-            <Footer data={data} userInfo={userInfo}></Footer>
-          ) : (
-            ""
-          )}
+          {
+            // @ts-ignore
+            !data?.listed &&
+            // @ts-ignore
+            userInfo?.wallet?.sol_address !== data.owner_address ? (
+              ""
+            ) : (
+              <Footer data={data} userInfo={userInfo}></Footer>
+            )
+          }
         </div>
       )}
     </>
