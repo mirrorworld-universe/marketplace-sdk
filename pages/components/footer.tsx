@@ -120,15 +120,14 @@ const Footer = (props: props) => {
                 } catch (error) {
                   if (
                     // @ts-ignore
-                    error?.response?.data?.message ===
-                    "ERROR_INSUFFICIENT_BALANCE"
+                    error?.response?.data?.code === 120004
                   ) {
                     setResultStatus(4);
                   } else {
                     setResultStatus(3);
                   }
                   // @ts-ignore
-                  console.log(error.response.data.message, "error");
+                  // console.log(error.response.data.message, "error");
                 }
               }}
             >
