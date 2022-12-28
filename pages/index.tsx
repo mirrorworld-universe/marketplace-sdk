@@ -112,8 +112,8 @@ const Home = () => {
       }
       // @ts-ignore
       if (window?.lock) return;
-      alert(document.documentElement.scrollHeight);
-      alert(
+      console.log(document.documentElement.scrollHeight);
+      console.log(
         document.documentElement.scrollHeight -
           document.documentElement.scrollTop -
           document.documentElement.clientHeight
