@@ -112,7 +112,6 @@ const Home = () => {
       }
       // @ts-ignore
       if (window?.lock) return;
-      console.log(document.documentElement.scrollHeight);
       console.log(
         document.documentElement.scrollHeight -
           document.documentElement.scrollTop -
