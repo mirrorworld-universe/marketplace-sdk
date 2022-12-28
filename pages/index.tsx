@@ -101,8 +101,10 @@ const Home = () => {
       if (!document) return;
       if (
         // @ts-ignore
-        document?.querySelector("#filter").offsetTop <
-        document.documentElement.scrollTop
+        document.documentElement.scrollHeight -
+          document.documentElement.scrollTop -
+          document.documentElement.clientHeight <
+        100
       ) {
         setScrollTop(true);
       } else {
