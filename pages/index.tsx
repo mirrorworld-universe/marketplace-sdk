@@ -98,8 +98,8 @@ const Home = () => {
       //     document.documentElement.scrollTop -
       //     document.documentElement.clientHeight
       // );
-      alert(document?.querySelector("#filter").offsetTop);
-      alert(document.documentElement.scrollTop);
+      // alert(document?.querySelector("#filter").offsetTop);
+      // alert(document.documentElement.scrollTop);
       if (!document) return;
       if (
         // @ts-ignore
@@ -112,11 +112,17 @@ const Home = () => {
       }
       // @ts-ignore
       if (window?.lock) return;
+      alert(document.documentElement.scrollHeight);
+      alert(
+        document.documentElement.scrollHeight -
+          document.documentElement.scrollTop -
+          document.documentElement.clientHeight
+      );
       if (
         document.documentElement.scrollHeight -
           document.documentElement.scrollTop -
           document.documentElement.clientHeight <
-        3
+        100
       ) {
         // console.log("slide bottom");
         // @ts-ignore
