@@ -98,7 +98,8 @@ const Home = () => {
       //     document.documentElement.scrollTop -
       //     document.documentElement.clientHeight
       // );
-
+      alert(document?.querySelector("#filter").offsetTop);
+      alert(document.documentElement.scrollTop);
       if (!document) return;
       if (
         // @ts-ignore
