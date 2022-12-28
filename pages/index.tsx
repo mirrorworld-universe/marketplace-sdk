@@ -8,7 +8,7 @@ import Search from "./components/search";
 import Filter from "./components/filter";
 import React, { useEffect, useState } from "react";
 import { getCollectionInfo, getCollectionNfts } from "./api/request";
-import { userConfig } from "userConfig";
+import userConfig from "@/userConfig.json";
 import { useRouter } from "next/router";
 
 const newList = new Array();
@@ -17,6 +17,7 @@ const Home = () => {
   const [firstTime, setFirstTime] = useState(false);
   const [listHeight, setListHeight] = useState([]);
   const [questParam, setQuestParam] = useState({
+    //  @ts-ignore
     collection: userConfig?.collections[0],
     page: 1,
     page_size: 10, // 最大 50
@@ -97,14 +98,13 @@ const Home = () => {
       //     document.documentElement.scrollTop -
       //     document.documentElement.clientHeight
       // );
-
+      // alert(document?.querySelector("#filter").offsetTop);
+      // alert(document.documentElement.scrollTop);
       if (!document) return;
       if (
         // @ts-ignore
-        document.documentElement.scrollHeight -
-          document.documentElement.scrollTop -
-          document.documentElement.clientHeight <
-        100
+        document?.querySelector("#filter").offsetTop <
+        document.documentElement.scrollTop
       ) {
         setScrollTop(true);
       } else {
@@ -112,11 +112,16 @@ const Home = () => {
       }
       // @ts-ignore
       if (window?.lock) return;
+      console.log(
+        document.documentElement.scrollHeight -
+          document.documentElement.scrollTop -
+          document.documentElement.clientHeight
+      );
       if (
         document.documentElement.scrollHeight -
           document.documentElement.scrollTop -
           document.documentElement.clientHeight <
-        3
+        100
       ) {
         // console.log("slide bottom");
         // @ts-ignore
