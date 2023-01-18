@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import {userConfig} from '@/userConfig'
+import userConfig from '../../userConfig.json'
 
 declare let window: any;
 
