@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import userConfig from '../../userConfig.json'
-
+console.log(userConfig, 'userconfig');
 declare let window: any;
 
 const ifProduct =  process.env.NEXT_PUBLIC_BRANCH_NAME === 'main';
@@ -201,7 +201,7 @@ export const getPrice = async (price:number) => {
   requestInterception();
   const data = await request.post(`nft/real_price`, {
     "price": price,
-    "fee": userConfig.gasFee *1000  // 0.001% ～ 100% 对应 1 ～ 100000 
+    "fee": userConfig?.serviceFee *1000  // 0.001% ～ 100% 对应 1 ～ 100000 
   })
   return data
 }
