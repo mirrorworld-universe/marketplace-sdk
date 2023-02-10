@@ -14,7 +14,7 @@ import { MirrorWorld, ClusterEnvironment } from "@mirrorworld/web3.js"
 const mirrorworld = new MirrorWorld({
   apiKey: userConfig.xApiKey,
   env: !ifProduct ? ClusterEnvironment.testnet : ClusterEnvironment.mainnet, // Can be ClusterEnvionment.mainnet for mainnet
-  staging: true
+  // staging: true
 })
 console.log(process.env.NEXT_PUBLIC_BRANCH_NAME, 'process.env.NEXT_PUBLIC_BRANCH_NAME');
 console.log(ifProduct, 'ifProduct');
