@@ -8,7 +8,10 @@ import type { AppProps } from "next/app";
 
 import Head from "next/head";
 
+import VConsole from "vconsole";
+
 function MyApp({ Component, pageProps }: AppProps) {
+  const vConsole = new VConsole();
   return (
     <>
       <Head>
