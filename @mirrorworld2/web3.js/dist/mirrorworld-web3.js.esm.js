@@ -535,7 +535,7 @@ var MirrorWorld = /*#__PURE__*/function () {
                                 console.debug('auth:approved_action', _payload);
 
                                 if (_payload.action && _payload.action.uuid === action.uuid) {
-                                  authWindow && authWindow.close();
+                                  window?.authview && window?.authview?.close();
                                   resolve({
                                     authorization_token: _payload.authorization_token,
                                     action: _payload.action
@@ -939,6 +939,7 @@ var MirrorWorld = /*#__PURE__*/function () {
     value: function () {
       var _openWallet = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee9(path) {
         var w, h, dualScreenLeft, dualScreenTop, width, height, systemZoom, left, top, authWindow;
+        const authview = {}
         return _regeneratorRuntime.wrap(function _callee9$(_context9) {
           while (1) {
             switch (_context9.prev = _context9.next) {
@@ -958,7 +959,7 @@ var MirrorWorld = /*#__PURE__*/function () {
                 left = (width - w) / 2 / systemZoom + dualScreenLeft;
                 top = (height - h) / 2 / systemZoom + dualScreenTop;
                 _context9.next = 12;
-                const url = "".concat(this.authView).concat(path)
+                // const url = "".concat(this.authView).concat(path)
                 // const a = function () {
                 //   var a = document.createElement('a');
                 //   a.setAttribute('href', url);
@@ -977,17 +978,17 @@ var MirrorWorld = /*#__PURE__*/function () {
                 // }, 4000);
                 // let newWindow = window.open('about:blank')
                 // return window.open("".concat(this.authView).concat(path), '_self', "\n            popup=true\n            width=".concat(w, ",\n            height=").concat(h, ",\n            top=").concat(top, ",\n            left=").concat(left));
-                function openUrl(url) {
-                  // var a = document.createElement('a');
-                  // a.setAttribute('href', url);
-                  // a.setAttribute('target', '_blank');
-                  // a.setAttribute('id', '123');
-                  // // 防止反复添加  
-                  // if (!document.getElementById('123')) {
-                  //   document.body.appendChild(a);
-                  // }
-                  // a.click();
-                }
+                // function openUrl(url) {
+                // var a = document.createElement('a');
+                // a.setAttribute('href', url);
+                // a.setAttribute('target', '_blank');
+                // a.setAttribute('id', '123');
+                // // 防止反复添加  
+                // if (!document.getElementById('123')) {
+                //   document.body.appendChild(a);
+                // }
+                // a.click();
+                // }
                 // try {
                 //   return window.open("".concat(this.authView).concat(path), '_blank', "\n            popup=true\n            width=".concat(w, ",\n            height=").concat(h, ",\n            top=").concat(top, ",\n            left=").concat(left));
                 // } catch (error) {
@@ -996,15 +997,21 @@ var MirrorWorld = /*#__PURE__*/function () {
                 const ele = document.createElement('div');
                 ele.innerHTML = "go to url";
                 ele.style = "color:red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);width:200px; height: 200px; background: pink; z-index: 999999; text-align: center; line-height: 200px;"
-                ele.onclick = () => {
-                  window.open("".concat(this.authView).concat(path), '_blank', "\n            popup=true\n            width=".concat(w, ",\n            height=").concat(h, ",\n            top=").concat(top, ",\n            left=").concat(left));
-                }
                 document.body.insertBefore(ele, document.body.firstElementChild);
+                ele.onclick = (_context9) => {
+                  console.log(authview, '_context9.sent');
+                  window.authview = window.open("".concat(this.authView).concat(path), '_blank', "\n            popup=true\n            width=".concat(w, ",\n            height=").concat(h, ",\n            top=").concat(top, ",\n            left=").concat(left));
+                  return window.authview
+                }
+              // window.authview = window.open("".concat(this.authView).concat(path), '_blank', "\n            popup=true\n            width=".concat(w, ",\n            height=").concat(h, ",\n            top=").concat(top, ",\n            left=").concat(left));
+              // return window.authview
+              // ele.onclick();
+              // return _context9.sent
+              // return window.open("".concat(this.authView).concat(path), '_blank', "\n            popup=true\n            width=".concat(w, ",\n            height=").concat(h, ",\n            top=").concat(top, ",\n            left=").concat(left));
               case 12:
-                authWindow = _context9.sent;
+                authWindow = window.authview;
                 if (!!window.focus && !!(authWindow !== null && authWindow !== void 0 && authWindow.focus)) authWindow.focus();
                 return _context9.abrupt("return", authWindow);
-
               case 15:
               case "end":
                 return _context9.stop();
