@@ -1,0 +1,11 @@
+import { ComputeNFTQueryRequestPayload, ICreateVerifiedCollectionPayload, ICreateVerifiedSubCollectionPayload, IMintNFTPayload, ITransferNFTPayload, IUpdateNFTPayload } from '../types/nft';
+import joi from 'joi';
+export declare const createVerifiedCollectionSchema: joi.ObjectSchema<ICreateVerifiedCollectionPayload>;
+export declare const createVerifiedSubCollectionSchema: joi.ObjectSchema<ICreateVerifiedSubCollectionPayload>;
+export declare const mintNFTSchema: joi.ObjectSchema<IMintNFTPayload>;
+export declare const updateNFTSchema: joi.ObjectSchema<IUpdateNFTPayload>;
+export declare const transferNFTSchema: joi.ObjectSchema<ITransferNFTPayload>;
+export declare const fetchNFTsByMintAddressesSchema: joi.ObjectSchema<ComputeNFTQueryRequestPayload<"mint_addresses">>;
+export declare const fetchNFTsByCreatorAddressesSchema: joi.ObjectSchema<ComputeNFTQueryRequestPayload<"creators">>;
+export declare const fetchNFTsByUpdateAuthoritiesSchema: joi.ObjectSchema<ComputeNFTQueryRequestPayload<"update_authorities">>;
+export declare const fetchNFTsByOwnerAddressesSchema: joi.ObjectSchema<ComputeNFTQueryRequestPayload<"owners">>;

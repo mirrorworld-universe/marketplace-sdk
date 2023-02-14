@@ -10,8 +10,15 @@ let request:any = null;
 
 
 import { MirrorWorld, ClusterEnvironment } from "@mirrorworld/web3.js"
+import { MirrorWorld as MirrorWorld2, ClusterEnvironment as ClusterEnvironment2} from "@mirrorworld2/web3.js"
 
 const mirrorworld = new MirrorWorld({
+  apiKey: userConfig.xApiKey,
+  env: !ifProduct ? ClusterEnvironment.testnet : ClusterEnvironment.mainnet, // Can be ClusterEnvionment.mainnet for mainnet
+  staging: true
+})
+
+const mirrorworld2 = new MirrorWorld2({
   apiKey: userConfig.xApiKey,
   env: !ifProduct ? ClusterEnvironment.testnet : ClusterEnvironment.mainnet, // Can be ClusterEnvionment.mainnet for mainnet
   staging: true
@@ -48,6 +55,8 @@ request =  axios.create({
 });
  mirrorworld._api.client.defaults.headers.common.Authorization = `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
  mirrorworld._api.sso.defaults.headers.common.Authorization =  `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
+ mirrorworld2._api.client.defaults.headers.common.Authorization = `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
+ mirrorworld2._api.sso.defaults.headers.common.Authorization =  `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
 }
 // Get collection info
 export const getCollectionInfo = async ()=>{
@@ -130,7 +139,7 @@ export const getNft = async (mintAddress: string)=> {
 // buy nft 
 export const buyNFT = async (mint_address:string, price:number) => {
   requestInterception();
-  const listing = await mirrorworld.buyNFT({
+  const listing = await mirrorworld2.buyNFT({
     "mintAddress": mint_address,
     "price": price,
   })

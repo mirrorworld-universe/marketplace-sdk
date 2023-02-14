@@ -1,0 +1,11 @@
+import joi from 'joi';
+import { IBuyNFTPayload, ICancelNFTPayload, IListNFTPayload, IUpdateListingPayload } from '../types/nft';
+import { MirrorWorldSDKErrorKey } from '../errors/errors.interface';
+import { ICreateMarketplacePayload, IStorefrontConfig, IUpdateMarketplacePayload } from '../types/marketplace';
+export declare const listNFTSchema: joi.ObjectSchema<IListNFTPayload>;
+export declare const buyNFTSchema: joi.ObjectSchema<IBuyNFTPayload>;
+export declare const updateNFTListingSchema: joi.ObjectSchema<IUpdateListingPayload>;
+export declare const cancelNFTListingSchema: joi.ObjectSchema<ICancelNFTPayload>;
+export declare const strorefrontConfigValidator: (error: MirrorWorldSDKErrorKey) => joi.ObjectSchema<IStorefrontConfig>;
+export declare const createMarketplaceSchema: joi.ObjectSchema<ICreateMarketplacePayload>;
+export declare const updateMarketplaceSchema: joi.ObjectSchema<IUpdateMarketplacePayload>;
