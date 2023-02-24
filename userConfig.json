@@ -1,11 +1,12 @@
 {
   "collections": [
-    "7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw"
+    "7xDs5UeeaaHY2jb6QAmDAYKmXHUkY3PgUkvsjTgP96hR",
+    "5ox2YnANyZysv6rDagB1WS2zzUsNPs4543kRD3xSATi4"
   ],
-  "xApiKey": "mw_RRetgcSVAXj6OpssSBj0t0PXbqsahlbnDaJ",
-  "serviceFee": 4.25,
-  "currencyOption": "SOL",
-  "name": "Mirror Jump",
-  "logo": "",
-  "network": "testnet"
+  "network": "devnet",
+  "xApiKey": "mw_HDKs7x6xyMipNiO2Ev4KCm8jF2CjPUxjfzv",
+  "serviceFee": 0.5,
+  "currencyOption": "USDC",
+  "name": "Cryptoians BD",
+  "logo": "https://collections.mirrorworld.fun/1677249517296-2.png"
 }
