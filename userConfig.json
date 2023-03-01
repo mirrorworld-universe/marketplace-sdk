@@ -1,11 +1,11 @@
 {
   "collections": [
-    "7Vv68CarFpqn291aTeeUz65Uxk1tp8X7gfR8CDMZo2gw"
+    "9beR6A671n5RM6nUPruD62w6DTUERvPXvWWFHvtiMFN3"
   ],
-  "xApiKey": "mw_RRetgcSVAXj6OpssSBj0t0PXbqsahlbnDaJ",
-  "serviceFee": 4.25,
+  "xApiKey": "mw_le6GVfNs1Sw4g5gODkjBDh7mkPPbFeqdfs4",
+  "serviceFee": 3,
   "currencyOption": "SOL",
-  "name": "Mirror Jump",
-  "logo": "",
-  "network": "testnet"
+  "name": "Zool Verse",
+  "logo": "https://collections.mirrorworld.fun/1677609315887-Tak berjudul3_20211130085210.png",
+  "network": "devnet"
 }
