@@ -4,7 +4,7 @@ import userConfig from '../../userConfig.json'
 console.log(userConfig, 'userconfig');
 declare let window: any;
 
-const ifProduct =  process.env.NEXT_PUBLIC_BRANCH_NAME === 'main';
+const ifProduct =  true;
 let request:any = null;
 
 
