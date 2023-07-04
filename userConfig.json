@@ -2,10 +2,10 @@
   "collections": [
     "6Gjohc4p7YBRig6w756CxXDz3uuFprN1mv4bZeZ3XF4S"
   ],
-  "xApiKey": "mw_testAmRKdRbBsBbIAw3CeMqS9GORmcG5BRUCU4D",
+  "xApiKey": "mw_tonemRuZ2UvqExDrL2ZuTcaArYlZHGGPPkS",
   "serviceFee": 4.25,
   "currencyOption": "SOL",
   "name": "Mirror Jump",
   "logo": "",
-  "network": "testnet"
+  "network": "devnet"
 }
