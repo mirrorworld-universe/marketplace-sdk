@@ -1,16 +1,12 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
 import userConfig from '../../userConfig.json'
-console.log(userConfig, 'userconfig');
+import { MirrorWorld, ClusterEnvironment } from "@mirrorworld/web3.js"
+import { MirrorWorld as MirrorWorld2, ClusterEnvironment as ClusterEnvironment2} from "@mirrorworld2/web3.js"
+
 declare let window: any;
 
 const ifProduct =  process.env.NEXT_PUBLIC_BRANCH_NAME === 'main';
 let request:any = null;
-
-
-
-import { MirrorWorld, ClusterEnvironment } from "@mirrorworld/web3.js"
-import { MirrorWorld as MirrorWorld2, ClusterEnvironment as ClusterEnvironment2} from "@mirrorworld2/web3.js"
 
 const mirrorworld = new MirrorWorld({
   apiKey: userConfig.xApiKey,
@@ -23,12 +19,6 @@ const mirrorworld2 = new MirrorWorld2({
   env: !ifProduct ? ClusterEnvironment.testnet : ClusterEnvironment.mainnet, // Can be ClusterEnvionment.mainnet for mainnet
   staging: true
 })
-console.log(process.env.NEXT_PUBLIC_BRANCH_NAME, 'process.env.NEXT_PUBLIC_BRANCH_NAME');
-console.log(ifProduct, 'ifProduct');
-console.log(ClusterEnvironment.testnet, 'ClusterEnvironment.testnet');
-console.log(ClusterEnvironment.mainnet, 'ClusterEnvironment.mainnet');
-console.log(!ifProduct ? ClusterEnvironment.testnet : ClusterEnvironment.mainnet,'env');
-
 
 const getAUTH = () => {
   const queryString = window.location.search;
@@ -39,9 +29,7 @@ const getAUTH = () => {
   // return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ5MCwiZXRoX2FkZHJlc3MiOiIweDkyZTVFODVGOTY4ZmNiN2Y5MTYzOEYzZjA4ODJCM0U3MTAyNDBEYjUiLCJzb2xfYWRkcmVzcyI6InJIcEt3RVlOQjh4WW1WdHU1V0tGc2J2aVpTekJIbnVDd0xldm56WnY0ek4iLCJlbWFpbCI6Im1pcnJvcmp1bXAwMDFAb3V0bG9vay5jb20iLCJ3YWxsZXQiOnsiZXRoX2FkZHJlc3MiOiIweDkyZTVFODVGOTY4ZmNiN2Y5MTYzOEYzZjA4ODJCM0U3MTAyNDBEYjUiLCJzb2xfYWRkcmVzcyI6InJIcEt3RVlOQjh4WW1WdHU1V0tGc2J2aVpTekJIbnVDd0xldm56WnY0ek4ifSwiY2xpZW50X2lkIjpudWxsLCJpYXQiOjE2NjU3Mjc1MTIsImV4cCI6MTY2ODMxOTUxMiwianRpIjoiYXV0aDo2NDkwIn0.n1sfGqqCoplKOVt_ezpMICemfSHPKFDWKrAk9fuCExU";
 }
 
-
 const requestInterception = () => {
-//  window.location.href = `${userConfig.loginUrl}?backurl=${window.location.href}`
 if(request) return;
 request =  axios.create({
   baseURL: ifProduct ? 
@@ -55,6 +43,7 @@ request =  axios.create({
 });
  mirrorworld._api.client.defaults.headers.common.Authorization = `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
  mirrorworld._api.sso.defaults.headers.common.Authorization =  `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
+
  mirrorworld2._api.client.defaults.headers.common.Authorization = `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
  mirrorworld2._api.sso.defaults.headers.common.Authorization =  `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
 }
@@ -74,29 +63,6 @@ export const getCollectionFilter = async (collection: string) => {
   return data
 }
 
-
-// get collection nfts
-// {
-//   "collection": "",
-//   "page": 1,
-//   "page_size": 20, // 最大 50
-//   "order": {
-//           "order_by": "price",
-//           "desc": true
-//       },
-//   "filter": [
-//       {
-//           "filter_name": "Background",
-//           "filter_type": "enum",
-//           "filter_value": ["red", "blue"]  // 支持多个同时选择
-//       },
-//       {
-//           "filter_name": "level",
-//           "filter_type": "range",
-//           "filter_range": [1, 10],    // 等级是 1 到 10 ，
-//       }
-//   ]
-// }
 export const getCollectionNfts = async (param: object) => {
   requestInterception();
   const data = await request.post(`nfts`, {
@@ -143,13 +109,6 @@ export const buyNFT = async (mint_address:string, price:number) => {
     "mintAddress": mint_address,
     "price": price,
   })
-  // const data = await request.post(`https://api-staging.mirrorworld.fun/v1/devnet/solana/marketplace/buy
-  // `, {
-  //   "mint_address": mint_address,
-  //   "price": price,
-  //   // "confirmation": "finalized"
-  // })
-  // return data;
   return listing;
 }
 
@@ -206,7 +165,6 @@ export const transferNFT = async ( mintAddress: string, recipientAddress: string
 }
 
 // getprice
-
 export const getPrice = async (price:number) => {
   requestInterception();
   const data = await request.post(`nft/real_price`, {
