@@ -66,7 +66,8 @@ export const getCollectionFilter = async (collection: string) => {
 export const getCollectionNfts = async (param: object) => {
   requestInterception();
   const data = await request.post(`nfts`, {
-      ...param
+      ...param,
+      auction_house: 'EggpsxeiCoahWgk2KQ7CmSn7Txcb19dzGggpqEr4qErU'
   })
   return data
 }
