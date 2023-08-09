@@ -15,6 +15,7 @@ const mirrorworld = new MirrorWorld({
 });
 
 const getAUTH = () => {
+  if (typeof window === 'undefined') return ''
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const auth = urlParams.get("auth");

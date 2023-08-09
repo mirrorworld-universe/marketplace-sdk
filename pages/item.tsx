@@ -23,6 +23,7 @@ const NftItem = () => {
   const [pageSize, setPageSize] = useState(1);
   const { query } = router;
   const getAddress = () => {
+    if (typeof window === 'undefined') return ''
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get("addr");
