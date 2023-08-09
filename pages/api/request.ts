@@ -15,6 +15,7 @@ const mirrorworld = new MirrorWorld({
 });
 
 const getAUTH = () => {
+  if (typeof window === 'undefined') return ''
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const auth = urlParams.get("auth");
@@ -84,7 +85,7 @@ export const getNftRecommend = async (search: string) => {
 
 export const getNft = async (mintAddress: string)=> {
   requestInterception();
-  const data = await request.get(`nft/${mintAddress}`);
+  const data = await request.get(`nft/${mintAddress}?auction_house=${userConfig.auction_house}`);
   return data
 }
 
