@@ -85,7 +85,7 @@ export const getNftRecommend = async (search: string) => {
 
 export const getNft = async (mintAddress: string)=> {
   requestInterception();
-  const data = await request.get(`nft/${mintAddress}`);
+  const data = await request.get(`nft/${mintAddress}?auction_house=${userConfig.auction_house}`);
   return data
 }
 
