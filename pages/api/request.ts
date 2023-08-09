@@ -91,7 +91,8 @@ export const getCollectionFilter = async (collection: string) => {
 export const getCollectionNfts = async (param: object) => {
   requestInterception();
   const data = await request.post(`nfts`, {
-      ...param
+      ...param,
+      auction_house: 'EggpsxeiCoahWgk2KQ7CmSn7Txcb19dzGggpqEr4qErU'
   })
   return data
 }
@@ -151,6 +152,7 @@ export const getNftActivities = async (search: string,  pageSize: number) => {
     "mint_address": search,
     "page":  pageSize,
     "page_size": 10, // max 50
+    auction_house: 'EggpsxeiCoahWgk2KQ7CmSn7Txcb19dzGggpqEr4qErU'
   })
   return data
 }
