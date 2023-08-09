@@ -7,5 +7,6 @@
   "currencyOption": "SOL",
   "name": "Mirror Jump",
   "logo": "",
-  "network": "testnet"
+  "network": "testnet",
+  "auction_house": "EggpsxeiCoahWgk2KQ7CmSn7Txcb19dzGggpqEr4qErU"
 }
