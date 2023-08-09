@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import userConfig from '../../userConfig.json'
-console.log(userConfig, 'userconfig');
+
 declare let window: any;
 
 const ifProduct =  true;
@@ -92,7 +92,7 @@ export const getCollectionNfts = async (param: object) => {
   requestInterception();
   const data = await request.post(`nfts`, {
       ...param,
-      auction_house: 'EggpsxeiCoahWgk2KQ7CmSn7Txcb19dzGggpqEr4qErU'
+      auction_house: userConfig.auction_house
   })
   return data
 }
@@ -152,7 +152,7 @@ export const getNftActivities = async (search: string,  pageSize: number) => {
     "mint_address": search,
     "page":  pageSize,
     "page_size": 10, // max 50
-    auction_house: 'EggpsxeiCoahWgk2KQ7CmSn7Txcb19dzGggpqEr4qErU'
+    auction_house: userConfig.auction_house
   })
   return data
 }
