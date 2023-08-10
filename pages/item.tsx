@@ -1,16 +1,9 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Item.module.less";
 import Footer from "./components/footer";
 import { useRouter } from "next/router";
 import { getNft, getNftActivities, getUser } from "./api/request";
 import React, { useEffect, useState } from "react";
-import { Divider } from "antd-mobile";
-import { relative } from "path";
-import { redirect } from "next/dist/server/api-utils";
 
-// let pageSize = 1;
 let activitylist: any = [];
 
 const NftItem = () => {
@@ -21,7 +14,6 @@ const NftItem = () => {
   const [init, setInit] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
   const [pageSize, setPageSize] = useState(1);
-  const { query } = router;
   const getAddress = () => {
     if (typeof window === 'undefined') return ''
     const queryString = window.location.search;
@@ -74,10 +66,7 @@ const NftItem = () => {
       if (window?.lock) {
         // @ts-ignore
         delete window?.lock;
-        // pageSize = 1;
-        // window?.lock = false;
       }
-      // pageSize = 1;
       document.removeEventListener("scroll", a);
     };
   });
@@ -94,13 +83,6 @@ const NftItem = () => {
     getUser().then((res) => {
       setUserInfo(res);
     });
-    // @ts-ignore
-    // if (window.lock) return;
-    // if (pageSize === 1) {
-    //   // @ts-ignore
-    //   window.lock = true;
-    //   getData();
-    // }
   });
   const getSelectedStatus = (name: string) => {
     if (typeof window === "undefined") return;
