@@ -25,18 +25,20 @@ const getAUTH = () => {
 
 
 const requestInterception = () => {
-if(request) return;
-request =  axios.create({
-  baseURL: ifProduct ? 
-  'https://api.mirrorworld.fun/v1/marketplace/'
-  : 'https://api-staging.mirrorworld.fun/v1/marketplace/' ,
-  headers: {
-    'Authorization': `Bearer ${getAUTH() || window?.localStorage?.auth}`,
-    'x-api-key': userConfig.xApiKey
-  },
-});
- mirrorworld._api.client.defaults.headers.common.Authorization = `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
- mirrorworld._api.sso.defaults.headers.common.Authorization =  `Bearer ${getAUTH()|| window?.localStorage?.auth}`;
+  if(request) return;
+  request =  axios.create({
+    baseURL: ifProduct ? 
+    'https://api.mirrorworld.fun/v1/marketplace/'
+    : 'https://api-staging.mirrorworld.fun/v1/marketplace/' ,
+    headers: {
+      'Authorization': `Bearer ${getAUTH() || window?.localStorage?.auth}`,
+      'x-api-key': userConfig.xApiKey
+    },
+  });
+
+  mirrorworld.v2.api.forEach(axiosIns => {
+    axiosIns.defaults.headers.common['Authorization'] = `Bearer ${getAUTH()|| window?.localStorage?.auth}`
+  })
 }
 // Get collection info
 export const getCollectionInfo = async ()=>{
