@@ -8,11 +8,7 @@ let request:any = null;
 
 import { MirrorWorld, Solana } from "@mirrorworld/web3.js"
 
-const mirrorworld = new MirrorWorld({
-  apiKey: userConfig.xApiKey,
-  chainConfig: ifProduct ? Solana('mainnet-beta'): Solana('devnet'),
-  staging: !ifProduct
-});
+
 
 const getAUTH = () => {
   if (typeof window === 'undefined') return ''
@@ -23,6 +19,7 @@ const getAUTH = () => {
   return auth;
 }
 
+let mirrorworld: MirrorWorld;
 
 const requestInterception = () => {
   if(request) return;
@@ -36,9 +33,16 @@ const requestInterception = () => {
     },
   });
 
-  mirrorworld.v2.api.forEach(axiosIns => {
-    axiosIns.defaults.headers.common['Authorization'] = `Bearer ${getAUTH()|| window?.localStorage?.auth}`
-  })
+  if (mirrorworld) return
+
+  mirrorworld = new MirrorWorld({
+    apiKey: userConfig.xApiKey,
+    chainConfig: ifProduct ? Solana('mainnet-beta'): Solana('devnet'),
+    staging: !ifProduct,
+    auth: {
+      authToken: `${getAUTH()|| window?.localStorage?.auth}`
+    }
+  });
 }
 // Get collection info
 export const getCollectionInfo = async ()=>{
